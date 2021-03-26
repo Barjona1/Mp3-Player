@@ -61,7 +61,7 @@ function fetchMusicDetails(){
     //poster Image, Pause/play Image
     $("#playpausebtn img").attr("src", "Image/pause-red.png");
     $("#bgImage").attr("src", poster[playlist_index]);
-    $("Image").attr("src", poster[playlist_index]);
+    $("#Image").attr("src", poster[playlist_index]);
 
     playlist_status.innerHTML = title[playlist_index];
     playlist_artist.innerHTML = artists[playlist_index];
@@ -157,4 +157,16 @@ function loop(){
         audio.loop = true;
         $("#repeat img").attr("src", "Image/rep1.png");
     }
+}
+function getRandomNumber(min, max){
+    let step1 = max-min+1;
+    let step2 = Math.random() * step1;
+    let result = Math.floor(step2) + min;
+    return result;
+}
+
+function random(){
+    let randomIndex = getRandomNumber(0 , playlist.length - 1);
+    playlist_index = randomIndex;
+    fetchMusicDetails();
 }
